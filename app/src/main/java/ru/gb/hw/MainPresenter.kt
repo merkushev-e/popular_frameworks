@@ -1,23 +1,29 @@
 package ru.gb.hw
 
+import ru.gb.hw.model.ButtonType
+import ru.gb.hw.model.ButtonUiModel
+
 class MainPresenter(private val view: MainView) {
     private val model = CountersModel()
 
-    fun counterClick(type: String) {
+    fun counterClick(type: ButtonType) {
         when (type){
-           MainActivity.BTN1 ->{
-               val nextValue = model.next(0)
-               view.setButtonTextFirst(nextValue.toString())
+           ButtonType.FIRST_BUTTON ->{
+               val nextValue = model.next(type)
+               val uiModel = ButtonUiModel(type, nextValue.toString())
+               view.setButtonText(uiModel)
            }
 
-            MainActivity.BTN2 ->{
-                val nextValue = model.next(1)
-                view.setButtonTextSecond(nextValue.toString())
+            ButtonType.SECOND_BUTTON->{
+                val nextValue = model.next(type)
+                val uiModel = ButtonUiModel(type, nextValue.toString())
+                view.setButtonText(uiModel)
             }
 
-            MainActivity.BTN3 ->{
-                val nextValue = model.next(2)
-                view.setButtonTextThird(nextValue.toString())
+            ButtonType.THIRD_BUTTON ->{
+                val nextValue = model.next(type)
+                val uiModel = ButtonUiModel(type, nextValue.toString())
+                view.setButtonText(uiModel)
             }
         }
     }
