@@ -1,12 +1,17 @@
 package ru.gb.hw
 
-import ru.gb.hw.model.ButtonType
+import moxy.MvpView
+import moxy.viewstate.strategy.OneExecutionStateStrategy
+import moxy.viewstate.strategy.SingleStateStrategy
+import moxy.viewstate.strategy.StateStrategyType
+
 import ru.gb.hw.model.ButtonUiModel
 
-interface MainView {
+@StateStrategyType(SingleStateStrategy::class)
+interface MainView: MvpView {
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
     fun setButtonText(buttonUiModel: ButtonUiModel)
-    fun setButtonTextFirst(buttonUiModel: ButtonUiModel)
-    fun setButtonTextSecond(buttonUiModel: ButtonUiModel)
-    fun setButtonTextThird(buttonUiModel: ButtonUiModel)
+
 
 }

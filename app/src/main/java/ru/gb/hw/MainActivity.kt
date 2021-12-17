@@ -2,15 +2,18 @@ package ru.gb.hw
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import moxy.MvpAppCompatActivity
+import moxy.ktx.moxyPresenter
 import ru.gb.hw.databinding.ActivityMainBinding
 import ru.gb.hw.model.ButtonType
 import ru.gb.hw.model.ButtonUiModel
 
-class MainActivity : AppCompatActivity(), MainView {
+class MainActivity : MvpAppCompatActivity(), MainView {
+
+    private val presenter by moxyPresenter { MainPresenter() }
 
 
 
-    private val presenter = MainPresenter(this)
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
@@ -33,17 +36,6 @@ class MainActivity : AppCompatActivity(), MainView {
             ButtonType.SECOND_BUTTON -> binding.btnCounter2.text = buttonUiModel.value
             ButtonType.THIRD_BUTTON -> binding.btnCounter3.text = buttonUiModel.value
         }
-    }
-    override fun setButtonTextFirst(buttonUiModel: ButtonUiModel) {
-        binding.btnCounter1.text = buttonUiModel.value
-    }
-
-    override fun setButtonTextSecond(buttonUiModel: ButtonUiModel) {
-        binding.btnCounter2.text = buttonUiModel.value
-    }
-
-    override fun setButtonTextThird(buttonUiModel: ButtonUiModel) {
-        binding.btnCounter3.text = buttonUiModel.value
     }
 
 
