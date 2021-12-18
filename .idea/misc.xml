@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android/RXDagger/Home/hw/app/src/main/res/layout/activity_main.xml" value="0.20885416666666667" />
+        <entry key="..\:/Android/RXDagger/Home/hw/app/src/main/res/layout/fragment_greetings.xml" value="0.19479166666666667" />
+        <entry key="..\:/Android/RXDagger/Home/hw/app/src/main/res/layout/fragment_sign_in.xml" value="0.18" />
       </map>
     </option>
   </component>
