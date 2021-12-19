@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">hw</string>
+    <string name="counter_one">Счетчик 1</string>
+    <string name="counter_two">Счетчик 2</string>
+    <string name="counter_three">Счетчик 3</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_hint">Login</string>
+    <string name="password_hint">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="greetings_view">Hello </string>
+
+
 </resources>
