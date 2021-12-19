@@ -12,22 +12,35 @@ import ru.gb.hw.model.UserRepositoryImpl
 import ru.gb.hw.mvpsignin.SignInPresenter
 
 
-private const val LOGIN = "login_name"
+
 
 
 class GreetingsFragment : MvpAppCompatFragment(R.layout.fragment_greetings), GreetingsView {
 
-    private val loginParam: String? by lazy {
-        arguments?.getString(LOGIN).orEmpty()
+    companion object {
+        const val LOGIN = "login_name"
+        @JvmStatic
+        fun newInstance(bundle: Bundle) =
+            GreetingsFragment().apply {
+                arguments = bundle
+            }
     }
+
+
+//    private lateinit var user: User
+
+    private val user by lazy {
+        arguments?.getParcelable(LOGIN) ?: User("")
+    }
+
+
 
     private var _binding: FragmentGreetingsBinding? = null
     private val binding get() = _binding!!
 
     private val presenter by moxyPresenter {
-        GreetingsPresenter(userLogin = loginParam,
+        GreetingsPresenter(user,
             userRepository = UserRepositoryImpl()
-
         ) }
 
 
@@ -37,21 +50,14 @@ class GreetingsFragment : MvpAppCompatFragment(R.layout.fragment_greetings), Gre
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentGreetingsBinding.bind(view)
 
+//        user = arguments?.getParcelable(LOGIN) ?: User("")
+
     }
 
-    companion object {
 
-        @JvmStatic
-        fun newInstance(login_param: String) =
-            GreetingsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(LOGIN, login_param)
-                }
-            }
-    }
 
     override fun showLoginName(login: String?) {
-        binding.greetingsTextview.text = resources.getString(R.string.greetings_view) + login
+        binding.greetingsTextview.text = resources.getString(R.string.greetings_view) + " " +login
     }
 
     override fun onDestroy() {

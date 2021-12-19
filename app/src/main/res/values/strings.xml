@@ -8,7 +8,7 @@
     <string name="login_hint">Login</string>
     <string name="password_hint">Password</string>
     <string name="sign_in">Sign In</string>
-    <string name="greetings_view">Hello!</string>
+    <string name="greetings_view">Hello </string>
 
 
 </resources>

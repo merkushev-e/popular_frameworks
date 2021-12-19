@@ -13,6 +13,7 @@ import ru.gb.hw.databinding.FragmentSignInBinding
 import ru.gb.hw.model.User
 import ru.gb.hw.model.UserRepository
 import ru.gb.hw.model.UserRepositoryImpl
+import ru.gb.hw.mvpgreetings.GreetingsFragment
 
 
 class SignInFragment : MvpAppCompatFragment(R.layout.fragment_sign_in), SignInView {
@@ -40,10 +41,11 @@ class SignInFragment : MvpAppCompatFragment(R.layout.fragment_sign_in), SignInVi
 
     override fun init() {
         binding.signInButton.setOnClickListener {
-            val login = binding.loginEditText.text.toString()
-            presenter.onButtonClicked(
-                User(login)
-            )
+            val user = User(binding.loginEditText.text.toString())
+            val bundle = Bundle().apply {
+                putParcelable(GreetingsFragment.LOGIN, user)
+            }
+            presenter.onButtonClicked(bundle)
         }
     }
 

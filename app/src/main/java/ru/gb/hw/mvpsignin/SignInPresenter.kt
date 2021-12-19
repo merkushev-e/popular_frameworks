@@ -1,5 +1,6 @@
 package ru.gb.hw.mvpsignin
 
+import android.os.Bundle
 import moxy.MvpPresenter
 import ru.gb.hw.model.User
 import ru.gb.hw.model.UserRepository
@@ -11,7 +12,7 @@ class SignInPresenter(
     private val router: CustomRouter
 ): MvpPresenter<SignInView>() {
 
-    fun onButtonClicked(user: User){
-        router.navigateTo(GreetingsScreen(user.login))
+    fun onButtonClicked(bundle: Bundle){
+        router.navigateTo(GreetingsScreen(bundle))
     }
 }
