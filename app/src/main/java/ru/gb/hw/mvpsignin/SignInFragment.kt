@@ -41,11 +41,8 @@ class SignInFragment : MvpAppCompatFragment(R.layout.fragment_sign_in), SignInVi
 
     override fun init() {
         binding.signInButton.setOnClickListener {
-            val user = User(binding.loginEditText.text.toString())
-            val bundle = Bundle().apply {
-                putParcelable(GreetingsFragment.LOGIN, user)
-            }
-            presenter.onButtonClicked(bundle)
+            val login = binding.loginEditText.text.toString()
+            presenter.onButtonClicked(login)
         }
     }
 
