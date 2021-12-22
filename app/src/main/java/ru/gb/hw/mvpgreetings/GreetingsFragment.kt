@@ -18,7 +18,7 @@ import ru.gb.hw.mvpsignin.SignInPresenter
 class GreetingsFragment : MvpAppCompatFragment(R.layout.fragment_greetings), GreetingsView {
 
     companion object {
-        const val LOGIN = "login_name"
+        const val USER = "login_name"
         @JvmStatic
         fun newInstance(bundle: Bundle) =
             GreetingsFragment().apply {
@@ -30,7 +30,7 @@ class GreetingsFragment : MvpAppCompatFragment(R.layout.fragment_greetings), Gre
 //    private lateinit var user: User
 
     private val user by lazy {
-        arguments?.getParcelable(LOGIN) ?: User("")
+        arguments?.getParcelable(USER) ?: User(" "," ")
     }
 
 

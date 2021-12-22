@@ -6,7 +6,8 @@ import ru.gb.hw.model.UserRepository
 
 class GreetingsPresenter(
     private var user: User,
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+
 )
     : MvpPresenter<GreetingsView>() {
 
@@ -15,4 +16,6 @@ class GreetingsPresenter(
         viewState.showLoginName(user.login)
 
     }
+
+
 }

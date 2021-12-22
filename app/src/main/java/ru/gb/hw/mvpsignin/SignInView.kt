@@ -8,4 +8,6 @@ import moxy.viewstate.strategy.StateStrategyType
 interface SignInView: MvpView {
 
     fun init()
+    fun showSignInErrorMessage()
+    fun hideKeyboard()
 }
