@@ -12,28 +12,27 @@ import ru.gb.hw.navigation.CustomRouter
 class SignInPresenter(
     private val userRepository: UserRepository,
     private val router: CustomRouter
-): MvpPresenter<SignInView>() {
+) : MvpPresenter<SignInView>() {
 
 
-    fun onButtonClicked(login: String, password: String){
+    fun onButtonClicked(login: String, password: String) {
         viewState.hideKeyboard()
-        if ((userRepository.getUserByLogin(login)) == null){
-            viewState.showSignInErrorMessage()
-        } else{
-
-            val user: User = userRepository.getUserByLogin(login)!!
-            if(user.password == password){
-                val bundle = Bundle().apply {
-                    putParcelable(GreetingsFragment.USER, user)
-                }
-                router.navigateTo(GreetingsScreen(bundle))
-            } else{
+        userRepository.getUserByLogin(login,password).subscribe(
+            {
+                displayUser(user = it)
+            },
+            {
                 viewState.showSignInErrorMessage()
             }
-
-        }
-
-
+        )
 
     }
+
+    private fun displayUser(user: User) {
+        val bundle = Bundle().apply {
+            putParcelable(GreetingsFragment.USER, user)
+        }
+        router.navigateTo(GreetingsScreen(bundle))
+    }
+
 }

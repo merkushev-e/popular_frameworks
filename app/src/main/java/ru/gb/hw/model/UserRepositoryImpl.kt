@@ -13,18 +13,15 @@ class UserRepositoryImpl: UserRepository {
 
 
 
-    override fun getUsers(): List<User> {
-         return users
-    }
-
-    override fun setUser(user: User) {
-        TODO("Not yet implemented")
+    override fun getUsers(): Observable<List<User>> {
+         return Observable.just(users)
     }
 
 
 
-    override fun getUserByLogin(userLogin: String): User? {
-        return users.findLast {it.login == userLogin }
+    override fun getUserByLogin(userLogin: String, userPass: String): Observable<User> {
+      return Observable.just(users).map { list -> list.first { user ->  user.login == userLogin && user.password == userPass } }
+
 
     }
 
