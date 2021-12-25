@@ -9,6 +9,10 @@
     <string name="password_hint">Password</string>
     <string name="sign_in">Sign In</string>
     <string name="greetings_view">Hello </string>
+    <string name="insert_the_number">Insert the number</string>
+    <string name="calculate">Calculate</string>
+    <string name="result">Result</string>
+    <string name="task4">Task4</string>
 
 
 </resources>

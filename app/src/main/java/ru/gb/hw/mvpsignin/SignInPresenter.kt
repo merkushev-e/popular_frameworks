@@ -8,6 +8,7 @@ import ru.gb.hw.model.User
 import ru.gb.hw.model.UserRepository
 import ru.gb.hw.mvpgreetings.GreetingsFragment
 import ru.gb.hw.mvpgreetings.GreetingsScreen
+import ru.gb.hw.mvpmultiply.MultiplyScreen
 import ru.gb.hw.navigation.CustomRouter
 
 class SignInPresenter(
@@ -28,6 +29,10 @@ class SignInPresenter(
             }
         )
 
+    }
+
+    fun openNewScreen(){
+        router.navigateTo(MultiplyScreen())
     }
 
     private fun displayUser(user: User) {

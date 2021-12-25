@@ -45,6 +45,9 @@ class SignInFragment : MvpAppCompatFragment(R.layout.fragment_sign_in), SignInVi
             val password = binding.passwordEditText.text.toString()
             presenter.onButtonClicked(login,password)
         }
+        binding.task4Button.setOnClickListener {
+            presenter.openNewScreen()
+        }
     }
 
      override fun showSignInErrorMessage(){
