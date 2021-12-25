@@ -2,6 +2,7 @@ package ru.gb.hw.mvpsignin
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
+import io.reactivex.rxjava3.observers.DisposableObserver
 import moxy.MvpPresenter
 import ru.gb.hw.model.User
 import ru.gb.hw.model.UserRepository
@@ -17,6 +18,7 @@ class SignInPresenter(
 
     fun onButtonClicked(login: String, password: String) {
         viewState.hideKeyboard()
+
         userRepository.getUserByLogin(login,password).subscribe(
             {
                 displayUser(user = it)
